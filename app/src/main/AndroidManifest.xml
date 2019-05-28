@@ -2,14 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lezhitech.mobilesafe">
 
+    <!-- android:theme="@android:style/Theme.Light.NoTitleBar"  -->
+    <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar"  -->
+    <!-- 这里的Activity继承了AppCompatActivity,要用@style/Theme.AppCompat.Light.NoActionBar对应的设置
+     <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        两个一起设置才能隐藏标题栏
+     -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
