@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lezhitech.mobilesafe">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <!-- android:theme="@android:style/Theme.Light.NoTitleBar"  -->
     <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar"  -->
     <!-- 这里的Activity继承了AppCompatActivity,要用@style/Theme.AppCompat.Light.NoActionBar对应的设置
