@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static java.lang.System.out;
+
 public class StreamUtil {
     /**
      * @param is 流对象
@@ -48,13 +50,19 @@ public class StreamUtil {
             result = new String(out.toByteArray(),"utf-8");
 
 //			result = out.toString();//将字节流转换成string
-
-            out.close();
+            return result;
         }catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            out.close();
         }
 
+        return null;
 
-        return result;
     }
 }

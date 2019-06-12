@@ -4,9 +4,33 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:text="功能列表"
+        style="@style/TitleStyle"/>
+    <!--<TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Home Activity"
-        android:textSize="20sp"
-        android:textColor="#000"/>
+        android:text="秋天秋天悄悄过去,留下小秘密,啊啊啊啊啊啊啊啊啊啊啊啊啊我爱我的祖国，一个都不能分割，爱你壮丽的山河"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="5dp"
+        android:textColor="#000"/>-->
+    <com.lezhitech.mobilesafe.view.FocusTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:text="秋天秋天悄悄过去,留下小秘密,啊啊啊啊啊啊啊啊啊啊啊啊啊我爱我的祖国，一个都不能分割，爱你壮丽的山河"
+        android:textColor="#000"></com.lezhitech.mobilesafe.view.FocusTextView>
+    <!--android:numColumns指定列数  -->
+    <!-- android:verticalSpacing="10dp"指定内部条目竖直方向间距为10dp -->
+    <GridView
+        android:id="@+id/gv_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:verticalSpacing="10dp"></GridView>
 </LinearLayout>

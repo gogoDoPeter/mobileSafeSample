@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.lezhitech.mobilesafe.R;
 import com.lezhitech.mobilesafe.utils.StreamUtil;
+import com.lezhitech.mobilesafe.utils.ToastUtil;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -87,14 +88,17 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
                     break;
                 case URL_ERROR:
                     Log.e(tag, "URL error");
+                    ToastUtil.show(getApplicationContext(),"URL异常");
                     enterHome();
                     break;
                 case IO_ERROR:
                     Log.e(tag, "IO error");
+                    ToastUtil.show(getApplicationContext(),"读取异常");
                     enterHome();
                     break;
                 case JSON_ERROR:
                     Log.e(tag, "Json error");
+                    ToastUtil.show(getApplicationContext(),"Json解析异常");
                     enterHome();
                     break;
             }

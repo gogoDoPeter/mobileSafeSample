@@ -13,4 +13,22 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="TitleStyle">
+        <!--  android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:background="#0f0"
+        android:gravity="center"
+        android:textColor="#000"-->
+        <!-- Customize your theme here. -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">#0f0</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#000</item>
+
+    </style>
 </resources>
