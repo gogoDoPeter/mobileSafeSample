@@ -24,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lezhitech.mobilesafe.R;
+import com.lezhitech.mobilesafe.utils.ConstantValue;
+import com.lezhitech.mobilesafe.utils.SpUtil;
 import com.lezhitech.mobilesafe.utils.StreamUtil;
 import com.lezhitech.mobilesafe.utils.ToastUtil;
 import com.lidroid.xutils.HttpUtils;
@@ -62,7 +64,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
 
     private String mVersionDes;
     private String mDownloadURL;
-    private static final int PERMISSON_REQUESTCODE = 0;
+
     private boolean isNeedCheckPermission = true;
     /**
      * 需要进行检测的权限数组 这里只列举了几项 可以根据自己的项目需求来添加
@@ -72,7 +74,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
 //            Manifest.permission.ACCESS_FINE_LOCATION,//定位权限
             Manifest.permission.WRITE_EXTERNAL_STORAGE,//存储卡写入权限
             Manifest.permission.READ_EXTERNAL_STORAGE,//存储卡读取权限
-//            Manifest.permission.READ_PHONE_STATE//读取手机状态权限
+            Manifest.permission.READ_PHONE_STATE//读取手机状态权限
 //            Manifest.permission.REQUEST_INSTALL_PACKAGES
     };
 
@@ -363,7 +365,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
             ActivityCompat.requestPermissions(this,
                     needRequestPermissonList.toArray(
                             new String[needRequestPermissonList.size()]),
-                    PERMISSON_REQUESTCODE);
+                    ConstantValue.PERMISSON_REQUESTCODE);
         }
         Log.i(tag, "checkPermissions ---");
     }
@@ -405,7 +407,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == PERMISSON_REQUESTCODE) {
+        if (requestCode == ConstantValue.PERMISSON_REQUESTCODE) {
             if (!verifyPermissions(grantResults)) {
                 Log.i(tag, "not grant permission");
             } else {
@@ -437,7 +439,15 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
     private void initData() {
         tv_version_name.setText("版本名称:" + getVersionName());
         mLocalVersionCode = getVersionCode();
-        checkVersion();
+        boolean isOpenUpdate = SpUtil.getBoolean(this, ConstantValue.OPEN_UPDATE, false);
+        if(isOpenUpdate){
+
+            checkVersion();
+        }else {
+//            Thread.sleep(4000);主线程中不能sleep
+//            mHandler.sendMessageDelayed(msg,4000)
+            mHandler.sendEmptyMessageDelayed(ENTER_HOME,4000);
+        }
     }
 
     /**

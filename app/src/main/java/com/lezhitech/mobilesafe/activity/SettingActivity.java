@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.lezhitech.mobilesafe.R;
+import com.lezhitech.mobilesafe.utils.ConstantValue;
+import com.lezhitech.mobilesafe.utils.SpUtil;
 import com.lezhitech.mobilesafe.view.SettingItemView;
 
 public class SettingActivity extends Activity {
@@ -18,11 +20,14 @@ public class SettingActivity extends Activity {
 
     private void initUpdate() {
         final SettingItemView siv_update = (SettingItemView) findViewById(R.id.siv_update);
+        boolean isCheckOpenUpdate = SpUtil.getBoolean(this, ConstantValue.OPEN_UPDATE, false);
+        siv_update.setCheck(isCheckOpenUpdate);
         siv_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean isCheck = siv_update.isCheck();
                 siv_update.setCheck(!isCheck);
+                SpUtil.putBoolean(getApplicationContext(),ConstantValue.OPEN_UPDATE,!isCheck);
             }
         });
     }
