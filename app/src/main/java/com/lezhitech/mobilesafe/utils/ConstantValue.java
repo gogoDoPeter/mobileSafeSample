@@ -9,4 +9,12 @@ public class ConstantValue {
      * sim卡号的key值
      */
     public static final String SIM_NUMBER = "sim_number";
+    /**
+     * 保存安全号码的key值
+     */
+    public static final String SECURITY_PHONE = "security_phone";
+    /**
+     * 是否打开安全防盗总开关的key值
+     */
+    public static final String OPEN_SECURITY = "open_security";
 }

@@ -14,7 +14,7 @@ public class SetupOverActivity extends Activity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         boolean is_setup_over = SpUtil.getBoolean(this, ConstantValue.SETUP_OVER,false);
-        if(false) {
+        if(is_setup_over) {
             setContentView(R.layout.activity_setup_over);
         }else{
             Intent intent = new Intent(this, Setup1Activity.class);

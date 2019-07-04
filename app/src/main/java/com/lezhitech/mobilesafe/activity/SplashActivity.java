@@ -74,8 +74,11 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
 //            Manifest.permission.ACCESS_FINE_LOCATION,//定位权限
             Manifest.permission.WRITE_EXTERNAL_STORAGE,//存储卡写入权限
             Manifest.permission.READ_EXTERNAL_STORAGE,//存储卡读取权限
-            Manifest.permission.READ_PHONE_STATE//读取手机状态权限
+            Manifest.permission.READ_PHONE_STATE,//读取手机状态权限
+            //install package需要动态申请，即使这里先申请了，后面仍然需要申请？
 //            Manifest.permission.REQUEST_INSTALL_PACKAGES
+            Manifest.permission.READ_CONTACTS,
+            Manifest.permission.WRITE_CONTACTS
     };
 
     private final Handler mHandler = new Handler() {

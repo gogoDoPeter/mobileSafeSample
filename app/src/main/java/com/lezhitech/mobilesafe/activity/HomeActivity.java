@@ -144,7 +144,7 @@ public class HomeActivity extends Activity {
                 String confirmPsd = et_confirm_psd.getText().toString().trim();
                 if(!TextUtils.isEmpty(psd) && !TextUtils.isEmpty(confirmPsd)){
                     if(psd.equals(confirmPsd)){
-                        Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Setup1Activity.class);
                         startActivity(intent);
                         dialog.dismiss();
                         String encoderMd5Psd = Md5Utils.encoder(psd);

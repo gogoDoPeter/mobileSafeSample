@@ -23,7 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="选择联系人"
-        android:onClick="selectNumber"
         android:background="@drawable/selector_number_btn_bg"/>
     <!-- 让内部点的控件水平居中 -->
     <LinearLayout

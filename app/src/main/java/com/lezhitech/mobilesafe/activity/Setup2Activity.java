@@ -106,13 +106,20 @@ public class Setup2Activity extends AppCompatActivity implements ActivityCompat.
     }
 
     public void nextPage(View view){
-        Intent intent = new Intent(getApplicationContext(), Setup3Activity.class);
-        startActivity(intent);
-        finish();
+        String sim_number = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
+        if(!TextUtils.isEmpty(sim_number)){
+            Intent intent = new Intent(getApplicationContext(), Setup3Activity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
+        }else{
+            ToastUtil.show(this,"请绑定SIM");
+        }
     }
     public void prePage(View view){
         Intent intent = new Intent(getApplicationContext(), Setup1Activity.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.pre_in_anim,R.anim.pre_out_anim);
     }
 }
