@@ -56,7 +56,6 @@ public class ContactListActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(mAdapter != null){
-
                     //1,获取点中条目的索引对应的指向集合中的对象
                     HashMap<String, String> hashMap = mAdapter.getItem(position);
                     //2,获取当前条目指向集合对应的手机号码

@@ -1,6 +1,5 @@
 package com.lezhitech.mobilesafe.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,7 +12,7 @@ import com.lezhitech.mobilesafe.utils.ConstantValue;
 import com.lezhitech.mobilesafe.utils.SpUtil;
 import com.lezhitech.mobilesafe.utils.ToastUtil;
 
-public class Setup3Activity extends Activity {
+public class Setup3Activity extends BaseSetupActivity {
 
     private EditText et_phone_number;
     private Button bt_select_number;
@@ -23,6 +22,28 @@ public class Setup3Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup3);
         initUI();
+    }
+
+    @Override
+    protected void showNextPage() {
+        String phone = et_phone_number.getText().toString();
+        if(!TextUtils.isEmpty(phone)){
+            Intent intent = new Intent(getApplicationContext(), Setup4Activity.class);
+            startActivity(intent);
+            finish();
+            SpUtil.putString(this, ConstantValue.SECURITY_PHONE,phone);
+            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
+        }else{
+            ToastUtil.show(this,"请输入号码");
+        }
+    }
+
+    @Override
+    protected void showPrePage() {
+        Intent intent = new Intent(getApplicationContext(), Setup2Activity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.pre_in_anim,R.anim.pre_out_anim);
     }
 
     /**
@@ -54,25 +75,5 @@ public class Setup3Activity extends Activity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-    public void nextPage(View view){
-        String phone = et_phone_number.getText().toString();
-        if(!TextUtils.isEmpty(phone)){
-            Intent intent = new Intent(getApplicationContext(), Setup4Activity.class);
-            startActivity(intent);
-            finish();
-            SpUtil.putString(this, ConstantValue.SECURITY_PHONE,phone);
-            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
-        }else{
-            ToastUtil.show(this,"请输入号码");
-        }
-    }
-    public void prePage(View view){
-        Intent intent = new Intent(getApplicationContext(), Setup2Activity.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.pre_in_anim,R.anim.pre_out_anim);
-    }
-
 
 }

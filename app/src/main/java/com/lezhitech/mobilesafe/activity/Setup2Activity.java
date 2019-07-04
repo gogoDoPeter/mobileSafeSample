@@ -19,7 +19,7 @@ import com.lezhitech.mobilesafe.utils.SpUtil;
 import com.lezhitech.mobilesafe.utils.ToastUtil;
 import com.lezhitech.mobilesafe.view.SettingItemView;
 
-public class Setup2Activity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+public class Setup2Activity extends BaseSetupActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private String simSerialNumber = "";
 
@@ -28,6 +28,27 @@ public class Setup2Activity extends AppCompatActivity implements ActivityCompat.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup2);
         initData();
+    }
+
+    @Override
+    protected void showNextPage() {
+        String sim_number = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
+        if(!TextUtils.isEmpty(sim_number)){
+            Intent intent = new Intent(getApplicationContext(), Setup3Activity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
+        }else{
+            ToastUtil.show(this,"请绑定SIM");
+        }
+    }
+
+    @Override
+    protected void showPrePage() {
+        Intent intent = new Intent(getApplicationContext(), Setup1Activity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.pre_in_anim,R.anim.pre_out_anim);
     }
 
     /**
@@ -105,21 +126,4 @@ public class Setup2Activity extends AppCompatActivity implements ActivityCompat.
         });
     }
 
-    public void nextPage(View view){
-        String sim_number = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
-        if(!TextUtils.isEmpty(sim_number)){
-            Intent intent = new Intent(getApplicationContext(), Setup3Activity.class);
-            startActivity(intent);
-            finish();
-            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
-        }else{
-            ToastUtil.show(this,"请绑定SIM");
-        }
-    }
-    public void prePage(View view){
-        Intent intent = new Intent(getApplicationContext(), Setup1Activity.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.pre_in_anim,R.anim.pre_out_anim);
-    }
 }
