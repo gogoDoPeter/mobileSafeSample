@@ -70,17 +70,17 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
      * 需要进行检测的权限数组 这里只列举了几项 可以根据自己的项目需求来添加
      */
     protected String[] needPermissions = {
-//            Manifest.permission.ACCESS_COARSE_LOCATION,//定位权限
-//            Manifest.permission.ACCESS_FINE_LOCATION,//定位权限
             Manifest.permission.WRITE_EXTERNAL_STORAGE,//存储卡写入权限
             Manifest.permission.READ_EXTERNAL_STORAGE,//存储卡读取权限
             Manifest.permission.READ_PHONE_STATE,//读取手机状态权限
-            //install package需要动态申请，即使这里先申请了，后面仍然需要申请？
+            //install package需要动态申请，即使这里先申请了，后面仍然需要申请？--是的
 //            Manifest.permission.REQUEST_INSTALL_PACKAGES
             Manifest.permission.READ_CONTACTS,
             Manifest.permission.WRITE_CONTACTS,
             Manifest.permission.SEND_SMS,
-            Manifest.permission.RECEIVE_SMS
+            Manifest.permission.RECEIVE_SMS,
+            Manifest.permission.ACCESS_COARSE_LOCATION,//定位权限
+            Manifest.permission.ACCESS_FINE_LOCATION//定位权限
     };
 
     private final Handler mHandler = new Handler() {
