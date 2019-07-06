@@ -3,6 +3,8 @@ package com.lezhitech.mobilesafe.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.lezhitech.mobilesafe.R;
 import com.lezhitech.mobilesafe.utils.ConstantValue;
@@ -10,6 +12,10 @@ import com.lezhitech.mobilesafe.utils.SpUtil;
 
 
 public class SetupOverActivity extends Activity {
+
+    private TextView tv_safe_phone_number;
+    private TextView tv_reset_setup;
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,5 +27,24 @@ public class SetupOverActivity extends Activity {
             startActivity(intent);
             finish();
         }
+        initUI();
+    }
+
+    /**
+     * 初始化UI
+     */
+    private void initUI() {
+        tv_safe_phone_number = (TextView) findViewById(R.id.tv_safe_phone_number);
+        String safe_phone = SpUtil.getString(this, ConstantValue.SECURITY_PHONE, "");
+        tv_safe_phone_number.setText(safe_phone);
+        tv_reset_setup = ((TextView) findViewById(R.id.tv_reset_setup));
+        tv_reset_setup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Setup1Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

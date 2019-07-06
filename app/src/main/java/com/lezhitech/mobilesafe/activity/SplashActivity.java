@@ -78,7 +78,8 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
             //install package需要动态申请，即使这里先申请了，后面仍然需要申请？
 //            Manifest.permission.REQUEST_INSTALL_PACKAGES
             Manifest.permission.READ_CONTACTS,
-            Manifest.permission.WRITE_CONTACTS
+            Manifest.permission.WRITE_CONTACTS,
+            Manifest.permission.SEND_SMS
     };
 
     private final Handler mHandler = new Handler() {
