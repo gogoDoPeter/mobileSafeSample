@@ -21,10 +21,14 @@ public class BootReceiver extends BroadcastReceiver {
         //1,获取sim卡号
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         ContextCompat.checkSelfPermission(context,Manifest.permission.READ_PHONE_STATE);
-        String simSerialNumber = tm.getSimSerialNumber();
+        String simSerialNumber = tm.getSimSerialNumber()+"xxx";
         //2,和sp中保存sim卡号对比
         String sim_number = SpUtil.getString(context, ConstantValue.SIM_NUMBER, "");
-        if(!sim_number.equals(sim_number)){
+
+        //get device phone number
+/*        String devicePhoneNum = tm.getLine1Number();
+        Log.i(tag,"devicePhoneNum="+devicePhoneNum);*/
+        if(!simSerialNumber.equals(sim_number)){
             //3,不一致，发送短信给安全号码
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage("5556",null,"SIM Change,Alarm!",null,null);

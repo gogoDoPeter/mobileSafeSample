@@ -79,7 +79,8 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
 //            Manifest.permission.REQUEST_INSTALL_PACKAGES
             Manifest.permission.READ_CONTACTS,
             Manifest.permission.WRITE_CONTACTS,
-            Manifest.permission.SEND_SMS
+            Manifest.permission.SEND_SMS,
+            Manifest.permission.RECEIVE_SMS
     };
 
     private final Handler mHandler = new Handler() {
@@ -339,13 +340,10 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
 //            getSupportActionBar().hide();
 //        }
         setContentView(R.layout.activity_splash);
-        if (isNeedCheckPermission) {
-            checkPermissions(needPermissions);
-        }
 
-/*    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-    StrictMode.setVmPolicy(builder.build());
-    builder.detectFileUriExposure();*/
+ /*    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                StrictMode.setVmPolicy(builder.build());
+                builder.detectFileUriExposure();*/
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -353,10 +351,10 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
         }
 
         initUI();
-        initData();
 
 //        x.Ext.init(this);
 //        x.Ext.setDebug(false); //输出debug日志，开启会影响性能
+
     }
 
     private void checkPermissions(String[] needPermissions) {
@@ -419,6 +417,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
                 isNeedCheckPermission = false;
             }
         }
+        initData();
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
@@ -568,6 +567,9 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
      */
     private void initUI() {
         tv_version_name = (TextView) findViewById(R.id.tv_version_name);
+        if (isNeedCheckPermission) {
+            checkPermissions(needPermissions);
+        }
     }
 
     @Override

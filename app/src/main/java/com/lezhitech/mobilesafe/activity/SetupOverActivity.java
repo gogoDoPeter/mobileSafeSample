@@ -1,8 +1,13 @@
 package com.lezhitech.mobilesafe.activity;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,7 +17,7 @@ import com.lezhitech.mobilesafe.utils.SpUtil;
 
 
 public class SetupOverActivity extends Activity {
-
+    private static final String tag = "SetupOverActivity";
     private TextView tv_safe_phone_number;
     private TextView tv_reset_setup;
 
@@ -46,5 +51,6 @@ public class SetupOverActivity extends Activity {
                 finish();
             }
         });
+
     }
 }
